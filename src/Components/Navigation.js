@@ -21,7 +21,7 @@ const Container = styled.div`
     background-color: #20fef7;
     border-radius: 50%;
     padding: 10px;
-    left: 150px;
+    left: 155px;
     top: -40px;
   }
 `;

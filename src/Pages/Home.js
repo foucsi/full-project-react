@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
-  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
   background-color: #273149;
-  border: 3px solid #fff;
-  height: 10%;
+  flex-direction: column;
+  height: 100%;
 
   .spanColor {
     color: #20fef7;

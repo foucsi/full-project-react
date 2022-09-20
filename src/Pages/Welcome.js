@@ -10,6 +10,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   background-color: #273149;
+  padding-top: 20px;
 
   .containerCrypto {
     display: flex;
@@ -22,22 +23,33 @@ const Container = styled.div`
   .cryptoBtc {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     width: 90%;
     height: 20%;
     background-color: #20fef7;
     border-radius: 10px;
     color: #112439;
+    font-size: 1.5rem;
   }
+
+  .cryptoBtc img {
+    height: 60px;
+  }
+
   .cryptoOther {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
     color: #fff;
     border-radius: 10px;
     height: 150px;
     width: 150px;
     background-color: #121828;
+  }
+
+  .cryptoOther img {
+    height: 30px;
   }
 `;
 
@@ -51,12 +63,16 @@ function Welcome() {
             return (
               <div key={crypto.id} className="cryptoBtc">
                 <p>{crypto.name}</p>
+                <p>${crypto.current_price}</p>
+                <img src={crypto.image} alt="" />
               </div>
             );
           }
           return (
             <div key={crypto.id} className="cryptoOther">
               <p>{crypto.name}</p>
+              <p>${crypto.current_price}</p>
+              <img src={crypto.image} alt="" />
             </div>
           );
         })}
