@@ -3,6 +3,7 @@ import Navigation from "../Components/Navigation";
 import styled from "styled-components";
 import { UserContext } from "../Context/UserContext";
 import Modal from "../Components/Modal";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -56,7 +57,7 @@ const Container = styled.div`
 `;
 
 function Welcome() {
-  const { data, modal } = useContext(UserContext);
+  const { data, modal, submit } = useContext(UserContext);
   return (
     <Container>
       {modal && <Modal />}
@@ -64,19 +65,35 @@ function Welcome() {
         {data.map((crypto) => {
           if (crypto.name === "Bitcoin") {
             return (
-              <div key={crypto.id} className="cryptoBtc">
+              <NavLink
+                to="/pageCrypto"
+                className="cryptoBtc"
+                onClick={() =>
+                  submit(crypto.name, crypto.current_price, crypto.image)
+                }
+              >
+                <div key={crypto.id} className="cryptoBtc">
+                  <p>{crypto.name}</p>
+                  <p>${crypto.current_price}</p>
+                  <img src={crypto.image} alt="" />
+                </div>
+              </NavLink>
+            );
+          }
+          return (
+            <NavLink
+              to="/pageCrypto"
+              className="cryptoOther"
+              onClick={() =>
+                submit(crypto.name, crypto.current_price, crypto.image)
+              }
+            >
+              <div key={crypto.id} className="cryptoOther">
                 <p>{crypto.name}</p>
                 <p>${crypto.current_price}</p>
                 <img src={crypto.image} alt="" />
               </div>
-            );
-          }
-          return (
-            <div key={crypto.id} className="cryptoOther">
-              <p>{crypto.name}</p>
-              <p>${crypto.current_price}</p>
-              <img src={crypto.image} alt="" />
-            </div>
+            </NavLink>
           );
         })}
       </div>
