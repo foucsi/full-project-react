@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { UserContext } from "../src/Context/UserContext";
 import Home from "./Pages/Home";
+import PageCrypto from "./Pages/PageCrypto";
 import Welcome from "./Pages/Welcome";
 
 const Application = styled.div`
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/pageCrypto" element={<PageCrypto />} />
         </Routes>
       </Application>
     </UserContext.Provider>
