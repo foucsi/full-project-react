@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import styled from "styled-components";
+import { UserContext } from "../Context/UserContext";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -27,6 +28,7 @@ const Container = styled.div`
 `;
 
 function Navigation() {
+  const { setModal, modal } = useContext(UserContext);
   return (
     <Container>
       <div className="containerLogo">
@@ -35,7 +37,11 @@ function Navigation() {
         </NavLink>
       </div>
       <BsPlusLg color="#808B9C" size={40} />
-      <AiOutlineSetting color="#808B9C" size={40} />
+      <AiOutlineSetting
+        color="#808B9C"
+        size={40}
+        onClick={() => setModal(!modal)}
+      />
     </Container>
   );
 }

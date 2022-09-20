@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import Navigation from "../Components/Navigation";
 import styled from "styled-components";
 import { UserContext } from "../Context/UserContext";
+import Modal from "../Components/Modal";
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -54,9 +56,10 @@ const Container = styled.div`
 `;
 
 function Welcome() {
-  const { data } = useContext(UserContext);
+  const { data, modal } = useContext(UserContext);
   return (
     <Container>
+      {modal && <Modal />}
       <div className="containerCrypto">
         {data.map((crypto) => {
           if (crypto.name === "Bitcoin") {
